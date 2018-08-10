@@ -13,10 +13,11 @@ class Album extends Component {
     this.state = {
       album: album,
       currentSong: album.songs[0],
-      currentTime: 0,
+      currentTime: 0.3,
       duration: album.songs[0].duration,
       isPlaying: false,
-      isHover: [].fill(false, 0, album.songs.length)
+      isHover: [].fill(false, 0, album.songs.length),
+      currentVolume: 0.3
     };
 
     this.audioElement = document.createElement('audio');
@@ -100,6 +101,27 @@ class Album extends Component {
     isHover[index] = false;
     this.setState({ ...this.state, isHover})
   }
+
+  handleVolumeChange(e) {
+    const newVolume = e.target.value;
+    this.audioElement.volume = newVolume;
+    this.setState({ currentVolume: newVolume })
+  }
+
+  formatTime(timeSeconds) {
+    if (isNaN(timeSeconds)) {
+      return '-:--';
+    }
+    else {
+      let minutes = Math.floor(timeSeconds / 60);
+      let seconds = Math.floor(timeSeconds % 60);
+      if (seconds < 10) {
+        return minutes + ':0' + seconds; 
+      } else {
+        return minutes + ':' + seconds;
+      }
+    }
+  }
   
   render() {
     return(
@@ -127,7 +149,7 @@ class Album extends Component {
                     {this.state.isHover[index] || song === this.state.currentSong ? null : index + 1}
                   </td>
                   <td>{ song.title }</td>  
-                  <td>{ song.duration }</td>
+                  <td>{ this.formatTime(song.duration) }</td>
                 </tr>
               )
             }
@@ -141,7 +163,9 @@ class Album extends Component {
           handleSongClick={() => this.handleSongClick(this.state.currentSong)}
           handlePrevClick={() => this.handlePrevClick()}
           handleNextClick={() => this.handleNextClick()}
-          handleTimeChange={(e) => this.handleTimeChange(e)}/>
+          formatTime={(timeSeconds) => this.formatTime(timeSeconds)}
+          handleTimeChange={(e) => this.handleTimeChange(e)}
+          handleVolumeChange={(e) => this.handleVolumeChange(e)}/>
       </section>
     );
   }
