@@ -139,10 +139,10 @@ class Album extends Component {
           </section>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-2"></div>
-          <div class="col-md-8">
-            <table id="song-list" class="mx-auto">
+        <div class="row mt-3">
+          <div class="col-md-3"></div>
+          <div class="col-md-6">
+            <table id="song-list" class="table mx-auto">
               <colgroup>
                 <col id="song-number-column" />
                 <col id="song-title-column" />
