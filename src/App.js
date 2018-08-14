@@ -11,11 +11,11 @@ class App extends Component {
     return (
       <div className="App container-fluid">
         <header>
-        <nav class="nav bg-light">
-          <Link to='/' class="nav-link">Landing</Link>
-          <Link to='/library' class="nav-link">Library</Link>
+        <nav className="nav bg-light">
+          <Link to='/' className="nav-link">Landing</Link>
+          <Link to='/library' className="nav-link">Library</Link>
         </nav>
-          <h1 class="display-3">Bloc Jams</h1>
+          <h1 className="display-3">Bloc Jams</h1>
         </header>
         <main>
           <Route exact path="/" component={Landing} />

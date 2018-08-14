@@ -126,11 +126,11 @@ class Album extends Component {
   render() {
     return(
       <section className='album'>
-        <div class="row">
-          <div class="col-md-2"></div>
-          <div class="col-md-8">
-          <section id="album-info" class="card mx-auto" style={{'max-width': 28 +'rem'}}>
-            <img id="album-cover-art" class="card-img-top" src={this.state.album.albumCover} alt={this.state.albumTitle}/>
+        <div className="row">
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
+          <section id="album-info" className="card mx-auto" style={{'maxWidth': 28 +'rem'}}>
+            <img id="album-cover-art" className="card-img-top" src={this.state.album.albumCover} alt={this.state.albumTitle}/>
             <div className="album-details">
               <h1 id="album-title>">{this.state.album.title}</h1>
               <h2 className="artist">{this.state.album.artist}</h2>
@@ -139,10 +139,10 @@ class Album extends Component {
           </section>
           </div>
         </div>
-        <div class="row mt-3">
-          <div class="col-md-3"></div>
-          <div class="col-md-6">
-            <table id="song-list" class="table mx-auto">
+        <div className="row mt-3">
+          <div className="col-md-3"></div>
+          <div className="col-md-6">
+            <table id="song-list" className="table mx-auto">
               <colgroup>
                 <col id="song-number-column" />
                 <col id="song-title-column" />
@@ -152,12 +152,12 @@ class Album extends Component {
                 {
                   this.state.album.songs.map( (song, index) => 
                     <tr className="song row" key={ index } onClick={() => this.handleSongClick(song)} onMouseEnter={() => this.handleSongHover(index)} onMouseLeave={() => this.handleSongLeave(index)}>
-                      <td class="col-2">
+                      <td className="col-2">
                         <span className={ song === this.state.currentSong ? (this.state.isPlaying ? "ion-pause" : "ion-play") : (this.state.isHover[index] ? "ion-play" : null)}></span>
                         {this.state.isHover[index] || song === this.state.currentSong ? null : index + 1}
                       </td>
-                      <td class="col-8">{ song.title }</td>  
-                      <td class="col-2">{ this.formatTime(song.duration) }</td>
+                      <td className="col-8">{ song.title }</td>  
+                      <td className="col-2">{ this.formatTime(song.duration) }</td>
                     </tr>
                   )
                 }
